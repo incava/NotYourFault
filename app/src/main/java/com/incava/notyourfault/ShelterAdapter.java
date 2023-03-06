@@ -2,6 +2,7 @@ package com.incava.notyourfault;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,13 +62,13 @@ public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
         }
         @SuppressLint("SetTextI18n")
         void onBind(ShelterItem shelterItem) {
-            tv_fcltNm.setText(context.getResources().getString(R.string.rcv_name) + shelterItem.getFcltNm());
-            etrPrdCn.setText(context.getResources().getString(R.string.rcv_limitDay) + shelterItem.getEtrPrdCn());
-            cpctCnt.setText(context.getResources().getString(R.string.rcv_num) + shelterItem.getCpctCnt());
-            rprsTelno.setText(context.getResources().getString(R.string.rcv_tel) + shelterItem.getRprsTelno());
-            fxno.setText(context.getResources().getString(R.string.rcv_faxTel) + shelterItem.getFxno());
-            lotnoAddr.setText(context.getResources().getString(R.string.rcv_addr) + shelterItem.getLotnoAddr());
-            etrTrgtCn.setText(context.getResources().getString(R.string.rcv_target) + shelterItem.getEtrTrgtCn());
+            tv_fcltNm.setText(shelterItem.getFcltNm());
+            etrPrdCn.setText(shelterItem.getEtrPrdCn());
+            cpctCnt.setText(shelterItem.getCpctCnt());
+            rprsTelno.setText(shelterItem.getRprsTelno());
+            fxno.setText(shelterItem.getFxno());
+            lotnoAddr.setText(shelterItem.getLotnoAddr());
+            etrTrgtCn.setText(shelterItem.getEtrTrgtCn());
         }
     }
 

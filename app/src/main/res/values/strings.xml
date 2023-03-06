@@ -2,12 +2,12 @@
     <string name="app_name">NotYourFault</string>
 
     <!-- 리사이클러뷰  -->
-    <string name="rcv_name">쉼터명 : </string>
-    <string name="rcv_target">입소 대상 : </string>
-    <string name="rcv_num">정원수 : </string>
-    <string name="rcv_tel">전화번호 : </string>
-    <string name="rcv_faxTel">팩스번호 : </string>
-    <string name="rcv_addr">주소 : </string>
-    <string name="rcv_limitDay">입소기간제한:</string>
+    <string name="rcv_name">쉼터명&#160;:&#160;</string>
+    <string name="rcv_target">입소대상&#160;:&#160;</string>
+    <string name="rcv_num">정원수&#160;:&#160;</string>
+    <string name="rcv_tel">전화번호&#160;:&#160;</string>
+    <string name="rcv_faxTel">팩스번호&#160;:&#160;</string>
+    <string name="rcv_addr">주소&#160;:&#160;</string>
+    <string name="rcv_limitDay">입소기간제한&#160;:&#160;</string>
 
 </resources>
