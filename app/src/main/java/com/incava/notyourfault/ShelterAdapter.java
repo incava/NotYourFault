@@ -13,7 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+
+/**
+ * MainActivity에서 리사이클뷰를 보여주기 위한 어댑터.
+ */
+
 public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
 
 
     public ShelterAdapter(Context context, ArrayList<ShelterItem> list) {
@@ -21,7 +30,7 @@ public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
         this.context = context;
     }
 
-    public void setList(ArrayList<ShelterItem> list) {
+    public void setList(ArrayList<ShelterItem> list) {//조회하려면 다시 해야하므로 아예지우고 다시 넣기.
         this.list.clear();
         this.list = list;
     }
@@ -59,6 +68,7 @@ public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
             fxno = itemView.findViewById(R.id.fxno);
             lotnoAddr = itemView.findViewById(R.id.tv_lotnoAddr);
             etrTrgtCn = itemView.findViewById(R.id.etrTrgtCn);
+
         }
         @SuppressLint("SetTextI18n")
         void onBind(ShelterItem shelterItem) {
@@ -70,6 +80,7 @@ public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
             lotnoAddr.setText(shelterItem.getLotnoAddr());
             etrTrgtCn.setText(shelterItem.getEtrTrgtCn());
         }
+
     }
 
 }

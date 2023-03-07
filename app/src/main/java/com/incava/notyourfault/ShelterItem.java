@@ -1,6 +1,9 @@
 package com.incava.notyourfault;
 
-public class ShelterItem {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ShelterItem implements Serializable {
 
     String rprsTelno;
     //대표전화번호

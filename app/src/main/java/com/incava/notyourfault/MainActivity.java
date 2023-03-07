@@ -24,6 +24,9 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+/**
+ * api를 호출해 리사이클러뷰 구현.
+ */
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
@@ -77,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.VISIBLE);
                     tvPb.setVisibility(View.VISIBLE);//프로그래스바 보이게 하기.
                 });
-                String baseUrl = "http://apis.data.go.kr/1383000/gmis/teenRAreaService/getTeenRAreaList";
-                String serviceKey = "hSF2%2B%2BmMiQXwGI5XfZmbSDPqorgTy%2BjVDuSMNwWmA1gY2h2HASedPbnFIz%2FeEBlxG8O2nv2vIsz7WSGLeIjWzw%3D%3D";
-                String numOfRows = "10";
-                String type = "xml";
+                String baseUrl = "http://apis.data.go.kr/1383000/gmis/teenRAreaService/getTeenRAreaList";// baseUrl
+                String serviceKey = "hSF2%2B%2BmMiQXwGI5XfZmbSDPqorgTy%2BjVDuSMNwWmA1gY2h2HASedPbnFIz%2FeEBlxG8O2nv2vIsz7WSGLeIjWzw%3D%3D"; // serviceKey
+                String numOfRows = "10"; //페이징당 갯수
+                String type = "xml"; //파싱 종류
                 StringBuilder urlBuilder = new StringBuilder(baseUrl); /*URL*/
                 urlBuilder.append("?").append(URLEncoder.encode("serviceKey", "UTF-8")).append("=").append(serviceKey); /*Service Key*/
                 urlBuilder.append("&").append(URLEncoder.encode("pageNo", "UTF-8")).append("=").append((arrayList.size()/10)+1); /*페이지 번호*/
