@@ -9,5 +9,9 @@
     <string name="rcv_faxTel">팩스번호&#160;:&#160;</string>
     <string name="rcv_addr">주소&#160;:&#160;</string>
     <string name="rcv_limitDay">입소기간제한&#160;:&#160;</string>
+    <string name="tv_openMode">운영형태&#160;:&#160;</string>
+    <string name="tv_hmpg">홈페이지&#160;주소&#160;:&#160;</string>
+    <string name="tv_subNm">인근지하철명&#160;:&#160;</string>
+    <string name="tv_busNm">인근버스정류장명&#160;:&#160;</string>
 
 </resources>
