@@ -20,10 +20,15 @@ import java.util.ArrayList;
 
 public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
 
-    public interface OnItemClickListener{
-        void onItemClick(View v, int position);
+    public interface OnItemClickListener{ //인터페이스 정의
+        void onItemClick(View v, ShelterItem shelterItem);
     }
 
+    private OnItemClickListener mListener = null; //객체 참조 변수.
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
 
     public ShelterAdapter(Context context, ArrayList<ShelterItem> list) {
         this.list = list;
@@ -68,6 +73,15 @@ public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
             fxno = itemView.findViewById(R.id.fxno);
             lotnoAddr = itemView.findViewById(R.id.tv_lotnoAddr);
             etrTrgtCn = itemView.findViewById(R.id.etrTrgtCn);
+
+            itemView.setOnClickListener(v -> {
+                int pos = getAdapterPosition();
+                if(pos != RecyclerView.NO_POSITION){//포지션이 있는 경우에만 -> 에러 제외코드
+                    if (mListener != null){
+                        mListener.onItemClick(v, list.get(pos));// 누를경우 그 아이템들이 나오도록.
+                    }
+                }
+            });
 
         }
         @SuppressLint("SetTextI18n")

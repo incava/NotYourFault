@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView =findViewById(R.id.rcv_shelter);
         adapter = new ShelterAdapter(this,arrayList);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener((v, shelterItem) -> {
+            Intent intent = new Intent(this,DetailActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("dataClass",shelterItem);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        });
         new ShelterThread().start(); // 처음 10개의 값을 가져오기.
         listenerAttach(); // 다음부터의 추가 구현은 최하단인지 확인 후, 가져오게 맡기기.(페이징)
     }
