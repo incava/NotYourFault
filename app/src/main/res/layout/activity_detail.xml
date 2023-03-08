@@ -20,7 +20,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="3"
+                android:lines="2"
                 android:text="시설명이 들어갈 곳."
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -29,6 +29,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
+            <fragment
+                android:id="@+id/map"
+                android:name="com.naver.maps.map.MapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_addrPrev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/rcv_addr"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/map"
+                app:layout_constraintTop_toBottomOf="@+id/map"/>
+
+            <TextView
+                android:id="@+id/tv_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소 적는 곳"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/tv_addrPrev"
+                app:layout_constraintTop_toTopOf="@id/tv_addrPrev" />
+
             <TextView
                 android:id="@+id/tv_limitPrev"
                 android:layout_width="wrap_content"
@@ -36,14 +66,13 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/rcv_limitDay"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+                app:layout_constraintStart_toStartOf="@+id/tv_addrPrev"
+                app:layout_constraintTop_toBottomOf="@+id/tv_addrPrev" />
 
             <TextView
                 android:id="@+id/tv_limitDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="입소 제한 되는 것을 서술."
                 app:layout_constraintTop_toTopOf="@+id/tv_limitPrev"
                 app:layout_constraintStart_toEndOf="@+id/tv_limitPrev"
@@ -204,7 +233,6 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:text="홈페이지 주소 들어갈 곳"
                 android:textColor="@color/hyperLink"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_hmpgPrev"

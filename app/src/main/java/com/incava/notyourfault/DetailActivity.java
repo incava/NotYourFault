@@ -19,7 +19,7 @@ import java.util.Locale;
  */
 public class DetailActivity extends AppCompatActivity {
 
-    TextView tvTitle, tvLimitDay,tvNum, tvTarget, tvOper, tvSub, tvBus, tvTel, tvFax, tvHmpg;
+    TextView tvTitle, tvLimitDay,tvNum, tvTarget, tvOper, tvSub, tvBus, tvTel, tvFax, tvHmpg, tvAddr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,8 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         findView(); //findView
         setBundleOfData(); // bundle값
+        NaverMapSdk.getInstance(this).setClient(
+                new NaverMapSdk.NaverCloudPlatformClient("m2hiqhfynl"));
     }
 
     void findView(){//findView 정리.
@@ -40,6 +42,7 @@ public class DetailActivity extends AppCompatActivity {
         tvTel = findViewById(R.id.tv_tel);
         tvFax = findViewById(R.id.tv_fax);
         tvHmpg = findViewById(R.id.tv_hmpg);
+        tvAddr = findViewById(R.id.tv_addr);
     }
 
     void setBundleOfData(){
@@ -56,6 +59,7 @@ public class DetailActivity extends AppCompatActivity {
         tvTel.setText(PhoneNumberUtils.formatNumber(item.rprsTelno, Locale.getDefault().getCountry()));//지역에 맞게 하이픈 설정.
         tvFax.setText(PhoneNumberUtils.formatNumber(item.fxno, Locale.getDefault().getCountry()));
         tvHmpg.setText(item.hmpgAddr);
+        tvAddr.setText(item.lotnoAddr);
         Linkify.addLinks(tvHmpg, Linkify.WEB_URLS);// 홈페이지 링크 걸기.
         tvTel.setOnClickListener(v->telClick());
     }
