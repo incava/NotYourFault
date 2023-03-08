@@ -13,8 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tv_title"
@@ -24,10 +23,10 @@
                 android:text="시설명이 들어갈 곳."
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <fragment
                 android:id="@+id/map"
@@ -35,8 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/tv_title"
-                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
             <TextView
                 android:id="@+id/tv_addrPrev"
@@ -46,17 +45,21 @@
                 android:text="@string/rcv_addr"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/map"
-                app:layout_constraintTop_toBottomOf="@+id/map"/>
+                app:layout_constraintEnd_toStartOf="@+id/tv_addr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/map" />
 
             <TextView
                 android:id="@+id/tv_addr"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="주소 적는 곳"
+                android:text="주소 적는 곳주소 적는 곳주소 적는 곳주소 적는 곳주소 적는 곳주소 적는 곳주소 적는 곳"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/tv_addrPrev"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_addrPrev"
                 app:layout_constraintTop_toTopOf="@id/tv_addrPrev" />
 
             <TextView
@@ -67,17 +70,16 @@
                 android:text="@string/rcv_limitDay"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tv_addrPrev"
-                app:layout_constraintTop_toBottomOf="@+id/tv_addrPrev" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_addr" />
 
             <TextView
                 android:id="@+id/tv_limitDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="입소 제한 되는 것을 서술."
-                app:layout_constraintTop_toTopOf="@+id/tv_limitPrev"
-                app:layout_constraintStart_toEndOf="@+id/tv_limitPrev"
                 app:layout_constraintBottom_toBottomOf="@id/tv_limitPrev"
-                />
+                app:layout_constraintStart_toEndOf="@+id/tv_limitPrev"
+                app:layout_constraintTop_toTopOf="@+id/tv_limitPrev" />
 
             <TextView
                 android:id="@+id/tv_numPrev"
@@ -86,156 +88,154 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/rcv_num"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/tv_limitPrev"
-                app:layout_constraintStart_toStartOf="@+id/tv_limitPrev" />
+                app:layout_constraintStart_toStartOf="@+id/tv_limitPrev"
+                app:layout_constraintTop_toBottomOf="@+id/tv_limitDay" />
 
             <TextView
                 android:id="@+id/tv_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="정원수 서술."
-                app:layout_constraintStart_toEndOf="@id/tv_numPrev"
                 app:layout_constraintBottom_toBottomOf="@id/tv_numPrev"
-                app:layout_constraintTop_toTopOf="@+id/tv_numPrev"
-                />
+                app:layout_constraintStart_toEndOf="@id/tv_numPrev"
+                app:layout_constraintTop_toTopOf="@+id/tv_numPrev" />
 
             <TextView
                 android:id="@+id/tv_targetPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/rcv_target"
                 android:layout_marginTop="4dp"
+                android:text="@string/rcv_target"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/tv_numPrev"
-                app:layout_constraintStart_toStartOf="@id/tv_numPrev"/>
+                app:layout_constraintStart_toStartOf="@id/tv_numPrev"
+                app:layout_constraintTop_toBottomOf="@id/tv_num" />
 
             <TextView
                 android:id="@+id/tv_target"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="입소대상이 들어가야할 곳"
-                app:layout_constraintStart_toEndOf="@id/tv_targetPrev"
-                app:layout_constraintTop_toTopOf="@id/tv_targetPrev"
                 app:layout_constraintBottom_toBottomOf="@id/tv_targetPrev"
-                />
+                app:layout_constraintStart_toEndOf="@id/tv_targetPrev"
+                app:layout_constraintTop_toTopOf="@id/tv_targetPrev" />
 
             <TextView
                 android:id="@+id/tv_operPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_openMode"
                 android:layout_marginTop="4dp"
+                android:text="@string/tv_openMode"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/tv_targetPrev"
-                app:layout_constraintStart_toStartOf="@id/tv_targetPrev" />
+                app:layout_constraintStart_toStartOf="@id/tv_targetPrev"
+                app:layout_constraintTop_toBottomOf="@id/tv_target" />
 
             <TextView
                 android:id="@+id/tv_oper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="운영형태를 설명하는 곳"
+                app:layout_constraintBottom_toBottomOf="@id/tv_operPrev"
                 app:layout_constraintStart_toEndOf="@id/tv_operPrev"
-                app:layout_constraintTop_toTopOf="@id/tv_operPrev"
-                app:layout_constraintBottom_toBottomOf="@id/tv_operPrev" />
+                app:layout_constraintTop_toTopOf="@id/tv_operPrev" />
 
             <TextView
                 android:id="@+id/tv_subPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_subNm"
                 android:layout_marginTop="4dp"
+                android:text="@string/tv_subNm"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_operPrev"
-                app:layout_constraintTop_toBottomOf="@id/tv_operPrev" />
+                app:layout_constraintTop_toBottomOf="@id/tv_oper" />
+
             <TextView
                 android:id="@+id/tv_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="인근 지하철 정보"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subPrev"
                 app:layout_constraintStart_toEndOf="@id/tv_subPrev"
-                app:layout_constraintTop_toTopOf="@id/tv_subPrev"
-                app:layout_constraintBottom_toBottomOf="@id/tv_subPrev" />
+                app:layout_constraintTop_toTopOf="@id/tv_subPrev" />
 
             <TextView
                 android:id="@+id/tv_busPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_busNm"
                 android:layout_marginTop="4dp"
+                android:text="@string/tv_busNm"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/tv_subPrev"
                 app:layout_constraintStart_toStartOf="@id/tv_subPrev"
-                />
+                app:layout_constraintTop_toBottomOf="@id/tv_sub" />
+
             <TextView
                 android:id="@+id/tv_bus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="인근 버스 정류장 정보"
-                app:layout_constraintStart_toEndOf="@id/tv_busPrev"
-                app:layout_constraintTop_toTopOf="@id/tv_busPrev"
                 app:layout_constraintBottom_toBottomOf="@id/tv_busPrev"
-                />
+                app:layout_constraintStart_toEndOf="@id/tv_busPrev"
+                app:layout_constraintTop_toTopOf="@id/tv_busPrev" />
 
             <TextView
                 android:id="@+id/tv_telPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/rcv_tel"
                 android:layout_marginTop="4dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_busPrev"
+                android:text="@string/rcv_tel"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_busPrev"
-                />
+                app:layout_constraintTop_toBottomOf="@id/tv_bus" />
 
             <TextView
                 android:id="@+id/tv_tel"
-                android:text="전화번호가 들어갈 곳."
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="전화번호가 들어갈 곳."
                 android:textColor="@color/hyperLink"
+                app:layout_constraintBottom_toBottomOf="@id/tv_telPrev"
                 app:layout_constraintStart_toEndOf="@id/tv_telPrev"
-                app:layout_constraintTop_toTopOf="@id/tv_telPrev"
-                app:layout_constraintBottom_toBottomOf="@id/tv_telPrev" />
+                app:layout_constraintTop_toTopOf="@id/tv_telPrev" />
 
             <TextView
                 android:id="@+id/tv_faxPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/rcv_faxTel"
                 android:layout_marginTop="4dp"
+                android:text="@string/rcv_faxTel"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/tv_telPrev"
-                app:layout_constraintStart_toStartOf="@id/tv_telPrev" />
+                app:layout_constraintStart_toStartOf="@id/tv_telPrev"
+                app:layout_constraintTop_toBottomOf="@id/tv_tel" />
 
             <TextView
                 android:id="@+id/tv_fax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="팩스번호 들어갈 곳"
-                app:layout_constraintStart_toEndOf="@id/tv_faxPrev"
-                app:layout_constraintTop_toTopOf="@id/tv_faxPrev"
                 app:layout_constraintBottom_toBottomOf="@id/tv_faxPrev"
-                 />
+                app:layout_constraintStart_toEndOf="@id/tv_faxPrev"
+                app:layout_constraintTop_toTopOf="@id/tv_faxPrev" />
 
             <TextView
                 android:id="@+id/tv_hmpgPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_hmpg"
                 android:layout_marginTop="4dp"
+                android:text="@string/tv_hmpg"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_faxPrev"
-                app:layout_constraintTop_toBottomOf="@+id/tv_faxPrev" />
+                app:layout_constraintEnd_toStartOf="@+id/tv_hmpg"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_fax" />
 
             <TextView
                 android:id="@+id/tv_hmpg"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:ellipsize="end"
+                android:text="안녕하세요.반갑습니다나는 정말행복합니다.안녕하세요반갑습니다나는 정말행복합니다안녕하세요반갑습니다나는 정말행복합니다"
                 android:textColor="@color/hyperLink"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_hmpgPrev"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_hmpgPrev"
                 app:layout_constraintTop_toTopOf="@id/tv_hmpgPrev" />
 
 

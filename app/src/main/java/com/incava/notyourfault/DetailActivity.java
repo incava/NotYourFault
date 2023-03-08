@@ -9,6 +9,7 @@ import android.telephony.PhoneNumberUtils;
 import android.text.util.Linkify;
 import android.widget.TextView;
 
+import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.NaverMapSdk;
 
 import java.util.Arrays;
@@ -27,6 +28,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         findView(); //findView
         setBundleOfData(); // bundle값
+        attachListener(); //리스너 연결.
         NaverMapSdk.getInstance(this).setClient(
                 new NaverMapSdk.NaverCloudPlatformClient("m2hiqhfynl"));
     }
@@ -59,9 +61,17 @@ public class DetailActivity extends AppCompatActivity {
         tvTel.setText(PhoneNumberUtils.formatNumber(item.rprsTelno, Locale.getDefault().getCountry()));//지역에 맞게 하이픈 설정.
         tvFax.setText(PhoneNumberUtils.formatNumber(item.fxno, Locale.getDefault().getCountry()));
         tvHmpg.setText(item.hmpgAddr);
-        tvAddr.setText(item.lotnoAddr);
-        Linkify.addLinks(tvHmpg, Linkify.WEB_URLS);// 홈페이지 링크 걸기.
-        tvTel.setOnClickListener(v->telClick());
+        tvAddr.setText(item.hmpgAddr);
+    }
+
+    void attachListener(){
+        tvHmpg.setOnClickListener(v -> hmpgClick());
+        tvTel.setOnClickListener(v -> telClick());
+    }
+
+    void hmpgClick(){
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tvAddr.getText().toString()));
+        startActivity(intent);
     }
 
     void telClick(){
