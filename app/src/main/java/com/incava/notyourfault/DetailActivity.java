@@ -29,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
         findView(); //findView
         setBundleOfData(); // bundle값
         attachListener(); //리스너 연결.
+
         NaverMapSdk.getInstance(this).setClient(
                 new NaverMapSdk.NaverCloudPlatformClient("m2hiqhfynl"));
     }
@@ -51,7 +52,6 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         ShelterItem item = (ShelterItem) bundle.getSerializable("dataClass");//MainActivity에서 받은 번들 풀기.
-        tvTitle.setText(item.fcltNm);
         tvLimitDay.setText(item.etrPrdCn);
         tvNum.setText(item.cpctCnt);
         tvTarget.setText(item.etrTrgtCn);
@@ -62,6 +62,7 @@ public class DetailActivity extends AppCompatActivity {
         tvFax.setText(PhoneNumberUtils.formatNumber(item.fxno, Locale.getDefault().getCountry()));
         tvHmpg.setText(item.hmpgAddr);
         tvAddr.setText(item.hmpgAddr);
+        setToolbar(item.fcltNm);
     }
 
     void attachListener(){
@@ -78,6 +79,12 @@ public class DetailActivity extends AppCompatActivity {
         //전화번호 클릭시 전화할 수 있도록
         Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tvTel.getText().toString()));
         startActivity(tt);
+    }
+
+    void setToolbar(String titles){// 앱바 적용.
+        setSupportActionBar(findViewById(R.id.toolbar));
+        getSupportActionBar().setTitle(titles);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }
