@@ -62,11 +62,11 @@ public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
     }
 
     public class VH extends RecyclerView.ViewHolder{
-        TextView tv_fcltNm, etrPrdCn, cpctCnt, rprsTelno, fxno, lotnoAddr, etrTrgtCn;
+        TextView fcltNm, etrPrdCn, cpctCnt, rprsTelno, fxno, lotnoAddr, etrTrgtCn;
 
         public VH(@NonNull View itemView) {
             super(itemView);
-            tv_fcltNm = itemView.findViewById(R.id.tv_fcltNm);
+            fcltNm = itemView.findViewById(R.id.tv_fcltNm);
             etrPrdCn = itemView.findViewById(R.id.etrPrdCn);
             cpctCnt = itemView.findViewById(R.id.cpctCnt);
             rprsTelno = itemView.findViewById(R.id.rprsTelno);
@@ -86,7 +86,7 @@ public class ShelterAdapter extends RecyclerView.Adapter<ShelterAdapter.VH> {
         }
         @SuppressLint("SetTextI18n")
         void onBind(ShelterItem shelterItem) {
-            tv_fcltNm.setText(shelterItem.getFcltNm());
+            fcltNm.setText(shelterItem.getFcltNm());
             etrPrdCn.setText(shelterItem.getEtrPrdCn());
             cpctCnt.setText(shelterItem.getCpctCnt());
             rprsTelno.setText(shelterItem.getRprsTelno());
