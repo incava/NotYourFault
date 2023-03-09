@@ -1,5 +1,6 @@
 package com.incava.notyourfault;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
 import android.text.util.Linkify;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.naver.maps.map.NaverMap;
@@ -87,4 +89,12 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish(); //만약 back버튼을 눌렀을 때 , 이 액티비티를 끝내도록. 설계
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
