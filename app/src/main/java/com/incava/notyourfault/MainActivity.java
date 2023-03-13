@@ -42,20 +42,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        progressBar = findViewById(R.id.pb_loading);
-        tvPb = findViewById(R.id.tv_pbCmt);
-        recyclerView =findViewById(R.id.rcv_shelter);
+        findView();
+        setToolbar();
         adapter = new ShelterAdapter(this,arrayList);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener((v, shelterItem) -> {
             Intent intent = new Intent(this,DetailActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putSerializable("dataClass",shelterItem);
+            bundle.putSerializable("dataClass",shelterItem); //아이템 전달 하기!
             intent.putExtras(bundle);
             startActivity(intent);
         });
+
         new ShelterThread().start(); // 처음 10개의 값을 가져오기.
         listenerAttach(); // 다음부터의 추가 구현은 최하단인지 확인 후, 가져오게 맡기기.(페이징)
+    }
+
+    void findView(){
+        progressBar = findViewById(R.id.pb_loading);
+        tvPb = findViewById(R.id.tv_pbCmt);
+        recyclerView =findViewById(R.id.rcv_shelter);
+    }
+
+
+    void setToolbar(){// 앱바 적용.
+        setSupportActionBar(findViewById(R.id.toolbar));
+        getSupportActionBar().setTitle(getResources().getText(R.string.app_name));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
