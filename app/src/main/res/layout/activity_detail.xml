@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#D5C9DD"
-    android:padding="16dp"
+    android:background="@color/pink"
     tools:context=".DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            android:background="#78A9AD"
+            android:background="@color/pink"
             app:title="헬로우"
             android:layout_gravity="center" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -36,7 +35,9 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

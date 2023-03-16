@@ -34,7 +34,6 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 
     TextView tvTitle, tvLimitDay,tvNum, tvTarget, tvOper, tvSub, tvBus, tvTel, tvFax, tvHmpg, tvAddr;
     LatLng latLng = null; // 위도 경도 담은 객체.
-    String title = null; //앱 제목
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
