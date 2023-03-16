@@ -2,6 +2,8 @@ package com.incava.notyourfault;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,10 +11,18 @@ import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
 import android.text.util.Linkify;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraAnimation;
+import com.naver.maps.map.CameraUpdate;
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.NaverMapSdk;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.overlay.Marker;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -20,9 +30,11 @@ import java.util.Locale;
 /**
  * 상세 페이지를 보여주면서 전화, 지도, 홈페이지등 여러가지 정보를 볼 수 있다.
  */
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     TextView tvTitle, tvLimitDay,tvNum, tvTarget, tvOper, tvSub, tvBus, tvTel, tvFax, tvHmpg, tvAddr;
+    LatLng latLng = null; // 위도 경도 담은 객체.
+    String title = null; //앱 제목
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +43,25 @@ public class DetailActivity extends AppCompatActivity {
         findView(); //findView
         setBundleOfData(); // bundle값
         attachListener(); //리스너 연결.
+        FragmentManager fm = getSupportFragmentManager();
+        MapFragment mapFragment = (MapFragment)fm.findFragmentById(R.id.map);
+        if (mapFragment == null) {
+            mapFragment = MapFragment.newInstance();
+            fm.beginTransaction().add(R.id.map, mapFragment).commit();
+        }
 
-        NaverMapSdk.getInstance(this).setClient(
-                new NaverMapSdk.NaverCloudPlatformClient("m2hiqhfynl"));
+        mapFragment.getMapAsync(this);
+
+    }
+
+    void settingMark(NaverMap naverMap){
+        Marker marker = new Marker();
+        marker.setPosition(latLng); //마커 위도 경도 넣기.
+        marker.setCaptionText(getSupportActionBar().getTitle().toString()); // 앱바의 제목과 일치하므로 넣어줌.
+        marker.setMap(naverMap); // 마커 생성.
+        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(latLng) //카메라 움직임.
+                .animate(CameraAnimation.Fly); //애니메이션 추가.
+        naverMap.moveCamera(cameraUpdate);
     }
 
     void findView(){//findView 정리.
@@ -48,6 +76,7 @@ public class DetailActivity extends AppCompatActivity {
         tvFax = findViewById(R.id.tv_fax);
         tvHmpg = findViewById(R.id.tv_hmpg);
         tvAddr = findViewById(R.id.tv_addr);
+
     }
 
     void setBundleOfData(){
@@ -65,6 +94,7 @@ public class DetailActivity extends AppCompatActivity {
         tvHmpg.setText(item.hmpgAddr);
         tvAddr.setText(item.hmpgAddr);
         setToolbar(item.fcltNm);
+        latLng = new LatLng(Double.parseDouble(item.lat),Double.parseDouble(item.lot)); // 위도 경도 받아서 저장.
     }
 
     void attachListener(){
@@ -96,5 +126,10 @@ public class DetailActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        settingMark(naverMap); // 준비되면 콜백으로 받음.
     }
 }

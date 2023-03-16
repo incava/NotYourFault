@@ -33,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ShelterAdapter adapter;
     ArrayList<ShelterItem> arrayList = new ArrayList<>(); // 뷰에 보여줄 리사이클러뷰 값 배열
-    TextView tvPb; // 프로그래스바 tv
+    TextView tvPb, tvTitle; // 프로그래스바 tv
     ProgressBar progressBar; //로딩 프로그래스바
 
     int totalCnt = Integer.MAX_VALUE; //xml 파싱시 총 카운트 처음 실행을 위해 max로 설정.
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +63,12 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.pb_loading);
         tvPb = findViewById(R.id.tv_pbCmt);
         recyclerView =findViewById(R.id.rcv_shelter);
+        tvTitle = findViewById(R.id.tv_title);
     }
 
 
     void setToolbar(){// 앱바 적용.
-        setSupportActionBar(findViewById(R.id.toolbar));
-        getSupportActionBar().setTitle(getResources().getText(R.string.app_name));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        tvTitle.setText(getResources().getText(R.string.app_name));
     }
 
 
