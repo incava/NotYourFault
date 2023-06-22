@@ -91,7 +91,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         tvTel.setText(PhoneNumberUtils.formatNumber(item.rprsTelno, Locale.getDefault().getCountry()));//지역에 맞게 하이픈 설정.
         tvFax.setText(PhoneNumberUtils.formatNumber(item.fxno, Locale.getDefault().getCountry()));
         tvHmpg.setText(item.hmpgAddr);
-        tvAddr.setText(item.hmpgAddr);
+        tvAddr.setText(item.lotnoAddr);
         setToolbar(item.fcltNm);
         latLng = new LatLng(Double.parseDouble(item.lat),Double.parseDouble(item.lot)); // 위도 경도 받아서 저장.
     }
